@@ -4,6 +4,10 @@ const main = document.querySelector("#main");
 let gridSquare;
 const slider = document.querySelector("input");
 const gridSize = document.querySelector("#grid-size");
+const gridHeight = document.querySelector('#grid-height')
+const gridWidth = document.querySelector('#grid-width')
+gridHeight.innerHTML = slider.value;
+gridWidth.innerHTML = slider.value;
 main.style.flexWrap = 'wrap';
 
 function addGridSquares() {
@@ -21,7 +25,8 @@ function addGridSquares() {
 
 addGridSquares();
 slider.addEventListener('input', function () {
-    gridSize.innerHTML = this.value;
+    gridHeight.innerHTML = slider.value;
+    gridWidth.innerHTML = slider.value;
 })
 
 
