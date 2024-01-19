@@ -1,7 +1,7 @@
 #main {
     display: flex;
     height: 100px;
-    width: 100px;
+    width: 110px;
     border: 1px black solid;
     margin: 0 auto;
 }
