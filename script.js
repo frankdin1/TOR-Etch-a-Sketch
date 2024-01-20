@@ -8,7 +8,6 @@ const gridWidth = document.querySelector('#grid-width')
 let gridSquare = document.createElement('div')
 gridSquare.setAttribute('id', 'grid-square');
 main.appendChild(gridSquare);
-const mainChildNodes = document.querySelectorAll("grid-square")
 
 gridHeight.innerHTML = slider.value;
 gridWidth.innerHTML = slider.value;
@@ -45,10 +44,10 @@ slider.addEventListener('input', function () {
     gridWidth.innerHTML = slider.value;
     addGridSquares(slider.value);
 })
-
-// for (let i = 0; i < mainChildNodes.length; i++) {
-//     mainChildNodes[i].addEventListener('mouseover', function () {
-//         console.log('I am hovering');
-//         mainChildNodes[i].style.backgroundColor = 'black';
-//     })
-// }
+const mainChildNodes = document.querySelectorAll("#grid-square")
+for (let i = 0; i < mainChildNodes.length; i++) {
+    mainChildNodes[i].addEventListener('mouseover', function () {
+        console.log('I am hovering');
+        mainChildNodes[i].style.backgroundColor = 'black';
+    })
+}
