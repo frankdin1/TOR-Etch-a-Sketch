@@ -41,7 +41,7 @@ function addGridSquares(gridDims) {
     }
 }
 
-function turnGridBlack() {
+function blackAndWhiteGrid() {
     for (let i = 0; i < mainChildNodes.length; i++) {
         mainChildNodes[i].addEventListener('mouseover', function () {
             mainChildNodes[i].style.backgroundColor = 'black';
@@ -78,10 +78,9 @@ function turnGridWhite() {
 function clickRGB() {
     this.classList.toggle('clicked-button');
     if (this.className == 'clicked-button') {
-        console.log('class = clicked')
         multiColorGrid();
     } else {
-        turnGridBlack();
+        blackAndWhiteGrid();
     }
 }
 rgb.addEventListener('click', clickRGB);
@@ -90,7 +89,7 @@ rgb.addEventListener('click', clickRGB);
 addGridSquares(slider.value);
 
 mainChildNodes = document.querySelectorAll("#grid-square");
-turnGridBlack();
+blackAndWhiteGrid();
 
 //Every time the slider moves, its value will be displayed on screen, and the addGridSquares function will run.
 slider.addEventListener('input', function () {
@@ -99,7 +98,11 @@ slider.addEventListener('input', function () {
     addGridSquares(slider.value);
     mainChildNodes = document.querySelectorAll("#grid-square")
 
-    //turnGridBlack();
-
+    if (rgb.className) {
+        multiColorGrid();
+    } else {
+        console.log("No class");
+        blackAndWhiteGrid();
+    }
 })
 
