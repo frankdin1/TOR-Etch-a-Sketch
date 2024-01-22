@@ -8,6 +8,7 @@ const gridWidth = document.querySelector('#grid-width')
 let gridSquare = document.createElement('div');
 let mainChildNodes;
 const rgb = document.querySelector('#multicolor');
+const clickedButton = document.querySelector('.clicked-button');
 
 gridSquare.setAttribute('id', 'grid-square');
 main.appendChild(gridSquare);
@@ -75,8 +76,10 @@ function turnGridWhite() {
     }
 }
 
-
-
+function clickRGB() {
+    this.classList.toggle('clicked-button');
+}
+rgb.addEventListener('click', clickRGB);
 //This will set the initial value of the grid when open the page.
 addGridSquares(slider.value);
 
@@ -93,3 +96,4 @@ slider.addEventListener('input', function () {
     //turnGridBlack();
     multiColorGrid();
 })
+

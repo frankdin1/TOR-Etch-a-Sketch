@@ -25,3 +25,13 @@ body {
     justify-content: center;
     width: 200px;
 }
+
+#multicolor {
+    width: 100px;
+    height: 20px;
+}
+
+.clicked-button {
+    background-color: aqua;
+    color: green;
+}
