@@ -5,8 +5,10 @@ const slider = document.querySelector("input");
 const gridSize = document.querySelector("#grid-size");
 const gridHeight = document.querySelector('#grid-height')
 const gridWidth = document.querySelector('#grid-width')
-let gridSquare = document.createElement('div')
+let gridSquare = document.createElement('div');
+let mainChildNodes;
 gridSquare.setAttribute('id', 'grid-square');
+mainChildNodes = document.querySelectorAll("#grid-square")
 main.appendChild(gridSquare);
 
 gridHeight.innerHTML = slider.value;
@@ -35,19 +37,26 @@ function addGridSquares(gridDims) {
     }
 }
 
+function turnGridBlack() {
+    for (let i = 0; i < mainChildNodes.length; i++) {
+        mainChildNodes[i].addEventListener('mouseover', function () {
+            console.log('I am hovering');
+            mainChildNodes[i].style.backgroundColor = 'black';
+        })
+    }
+}
+
 //This will set the initial value of the grid when open the page.
 addGridSquares(slider.value);
+turnGridBlack();
 
 //Every time the slider moves, its value will be displayed on screen, and the addGridSquares function will run.
+//let nodes = [];
 slider.addEventListener('input', function () {
     gridHeight.innerHTML = slider.value;
     gridWidth.innerHTML = slider.value;
     addGridSquares(slider.value);
+    mainChildNodes = document.querySelectorAll("#grid-square")
+    console.log(mainChildNodes)
+    turnGridBlack();
 })
-const mainChildNodes = document.querySelectorAll("#grid-square")
-for (let i = 0; i < mainChildNodes.length; i++) {
-    mainChildNodes[i].addEventListener('mouseover', function () {
-        console.log('I am hovering');
-        mainChildNodes[i].style.backgroundColor = 'black';
-    })
-}
