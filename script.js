@@ -13,9 +13,13 @@ const clickedButton = document.querySelector('.clicked-button');
 gridSquare.setAttribute('id', 'grid-square');
 main.appendChild(gridSquare);
 
-gridHeight.innerHTML = slider.value;
-gridWidth.innerHTML = slider.value;
+displayGridSize();
 main.style.flexWrap = 'wrap';
+
+function displayGridSize() {
+    gridHeight.innerHTML = slider.value;
+    gridWidth.innerHTML = slider.value;
+}
 
 function addGridSquares(gridDims) {
     //In the browser, under developer tools, if you run `console.dir(main), you will see the values of clientHeight and offsetTop
@@ -83,26 +87,31 @@ function clickRGB() {
         blackAndWhiteGrid();
     }
 }
-rgb.addEventListener('click', clickRGB);
 
-//This will set the initial value of the grid when open the page.
-addGridSquares(slider.value);
-
-mainChildNodes = document.querySelectorAll("#grid-square");
-blackAndWhiteGrid();
-
-//Every time the slider moves, its value will be displayed on screen, and the addGridSquares function will run.
-slider.addEventListener('input', function () {
-    gridHeight.innerHTML = slider.value;
-    gridWidth.innerHTML = slider.value;
-    addGridSquares(slider.value);
-    mainChildNodes = document.querySelectorAll("#grid-square")
-
+function gridPatterChoice() {
     if (rgb.className) {
         multiColorGrid();
     } else {
-        console.log("No class");
         blackAndWhiteGrid();
     }
-})
+}
 
+function gamePlay() {
+    rgb.addEventListener('click', clickRGB);
+
+    //This will set the initial value of the grid when open the page.
+    addGridSquares(slider.value);
+
+    mainChildNodes = document.querySelectorAll("#grid-square");
+    blackAndWhiteGrid();
+
+    //Every time the slider moves, its value will be displayed on screen, and the addGridSquares function will run.
+    slider.addEventListener('input', function () {
+        displayGridSize();
+        addGridSquares(slider.value);
+        mainChildNodes = document.querySelectorAll("#grid-square")
+        gridPatterChoice();
+    })
+}
+
+gamePlay();
