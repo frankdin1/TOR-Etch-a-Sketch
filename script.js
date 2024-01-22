@@ -77,15 +77,21 @@ function turnGridWhite() {
 }
 
 function clickRGB() {
-    this.classList.toggle('clicked-button');
+    rgb.classList.toggle('clicked-button');
+    if (rgb.className == 'clicked-button') {
+        console.log('class = clicked')
+        multiColorGrid();
+    } else {
+        turnGridBlack();
+    }
 }
 rgb.addEventListener('click', clickRGB);
+
 //This will set the initial value of the grid when open the page.
 addGridSquares(slider.value);
 
-
 mainChildNodes = document.querySelectorAll("#grid-square");
-turnGridBlack();
+
 
 //Every time the slider moves, its value will be displayed on screen, and the addGridSquares function will run.
 slider.addEventListener('input', function () {
@@ -93,7 +99,8 @@ slider.addEventListener('input', function () {
     gridWidth.innerHTML = slider.value;
     addGridSquares(slider.value);
     mainChildNodes = document.querySelectorAll("#grid-square")
+
     //turnGridBlack();
-    multiColorGrid();
+
 })
 
