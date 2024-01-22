@@ -31,6 +31,16 @@ body {
     height: 20px;
 }
 
+#eraser {
+    width: 100px;
+    height: 20px;
+}
+
+#eraser,
+#multicolor {
+    margin: 4px;
+}
+
 .clicked-button {
     background-color: aqua;
     color: green;
