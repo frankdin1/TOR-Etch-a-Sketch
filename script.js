@@ -45,7 +45,6 @@ function turnGridBlack() {
     for (let i = 0; i < mainChildNodes.length; i++) {
         mainChildNodes[i].addEventListener('mouseover', function () {
             mainChildNodes[i].style.backgroundColor = 'black';
-            //mainChildNodes[i].style.backgroundColor = 'rgb(0,0,0)';
         })
     }
 }
@@ -77,8 +76,8 @@ function turnGridWhite() {
 }
 
 function clickRGB() {
-    rgb.classList.toggle('clicked-button');
-    if (rgb.className == 'clicked-button') {
+    this.classList.toggle('clicked-button');
+    if (this.className == 'clicked-button') {
         console.log('class = clicked')
         multiColorGrid();
     } else {
@@ -91,7 +90,7 @@ rgb.addEventListener('click', clickRGB);
 addGridSquares(slider.value);
 
 mainChildNodes = document.querySelectorAll("#grid-square");
-
+turnGridBlack();
 
 //Every time the slider moves, its value will be displayed on screen, and the addGridSquares function will run.
 slider.addEventListener('input', function () {
