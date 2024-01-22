@@ -8,7 +8,6 @@ const gridWidth = document.querySelector('#grid-width')
 let gridSquare = document.createElement('div');
 let mainChildNodes;
 gridSquare.setAttribute('id', 'grid-square');
-mainChildNodes = document.querySelectorAll("#grid-square")
 main.appendChild(gridSquare);
 
 gridHeight.innerHTML = slider.value;
@@ -16,7 +15,7 @@ gridWidth.innerHTML = slider.value;
 main.style.flexWrap = 'wrap';
 
 function addGridSquares(gridDims) {
-    //In the browser, under developer tools, if you run `cosnole.dir(main), you will see the values of clientHeight and offsetTop
+    //In the browser, under developer tools, if you run `console.dir(main), you will see the values of clientHeight and offsetTop
     const mainDimensionInInt = parseFloat(main.clientHeight - main.offsetTop)
 
     //If there are any childNodes, remove them to make way for the new childnodes that will show up every time the eventlistener is run.
@@ -33,6 +32,7 @@ function addGridSquares(gridDims) {
             gridSquare.style.width = (mainDimensionInInt / gridDims) - 2 * gridSquareBorderWidthInInt.toString() + 'px';
             gridSquare.style.height = gridSquare.style.width;
             main.appendChild(gridSquare);
+
         }
     }
 }
@@ -46,17 +46,19 @@ function turnGridBlack() {
     }
 }
 
+
 //This will set the initial value of the grid when open the page.
 addGridSquares(slider.value);
-turnGridBlack();
+
 
 //Every time the slider moves, its value will be displayed on screen, and the addGridSquares function will run.
-//let nodes = [];
 slider.addEventListener('input', function () {
     gridHeight.innerHTML = slider.value;
     gridWidth.innerHTML = slider.value;
     addGridSquares(slider.value);
     mainChildNodes = document.querySelectorAll("#grid-square")
-    console.log(mainChildNodes)
     turnGridBlack();
 })
+
+mainChildNodes = document.querySelectorAll("#grid-square");
+turnGridBlack();
