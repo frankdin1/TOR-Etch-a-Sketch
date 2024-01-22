@@ -1,5 +1,6 @@
 body {
     display: flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 #main {
@@ -15,15 +16,46 @@ body {
 #functions {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
     width: 300px;
+}
+
+#title {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 #slidecontainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 200px;
+}
+
+input {
+    width: 150px;
+}
+
+span {
+    display: flex;
+    justify-content: center;
+}
+
+#grid-height {
+    margin-right: 6px;
+}
+
+#grid-width {
+    margin-left: 6px;
+}
+
+#grid-size {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    border: 2px grey solid;
+    border-radius: 4px;
+    width: 100px;
 }
 
 #multicolor {

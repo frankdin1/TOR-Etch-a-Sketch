@@ -9,6 +9,7 @@ let gridSquare = document.createElement('div');
 let mainChildNodes;
 const rgb = document.querySelector('#multicolor');
 const clickedButton = document.querySelector('.clicked-button');
+const eraser = document.querySelector('#eraser');
 
 gridSquare.setAttribute('id', 'grid-square');
 main.appendChild(gridSquare);
@@ -79,38 +80,54 @@ function turnGridWhite() {
     }
 }
 
-function clickRGB() {
+function colorOrBlack() {
     this.classList.toggle('clicked-button');
     if (this.className == 'clicked-button') {
         multiColorGrid();
-    } else {
+        eraser.classList.remove('clicked-button');
+    } else if (this.className == '' && eraser.className == "") {
         blackAndWhiteGrid();
     }
 }
 
-function gridPatterChoice() {
+function erase() {
+    this.classList.toggle('clicked-button');
+    if (this.className == 'clicked-button') {
+        turnGridWhite();
+        rgb.classList.remove('clicked-button');
+    } else if (this.className == '' && rgb.className == "") {
+        blackAndWhiteGrid();
+    } else if (this.className == '' && rgb.className == "clicked-button") {
+        multiColorGrid();
+    }
+}
+
+function buttons() {
+    rgb.addEventListener('click', colorOrBlack);
+    eraser.addEventListener('click', erase);
+}
+
+function gridPatternChoice() {
     if (rgb.className) {
         multiColorGrid();
     } else {
+        console.log("No class");
         blackAndWhiteGrid();
     }
 }
-
 function gamePlay() {
-    rgb.addEventListener('click', clickRGB);
 
-    //This will set the initial value of the grid when open the page.
+    buttons();
     addGridSquares(slider.value);
-
     mainChildNodes = document.querySelectorAll("#grid-square");
     blackAndWhiteGrid();
 
-    //Every time the slider moves, its value will be displayed on screen, and the addGridSquares function will run.
+    //This event happens when the slider is moved
     slider.addEventListener('input', function () {
         displayGridSize();
         addGridSquares(slider.value);
         mainChildNodes = document.querySelectorAll("#grid-square")
-        gridPatterChoice();
+        gridPatternChoice();
     })
 }
 
