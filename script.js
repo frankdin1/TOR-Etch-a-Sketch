@@ -7,6 +7,8 @@ const gridHeight = document.querySelector('#grid-height')
 const gridWidth = document.querySelector('#grid-width')
 let gridSquare = document.createElement('div');
 let mainChildNodes;
+const rgb = document.querySelector('#multicolor');
+
 gridSquare.setAttribute('id', 'grid-square');
 main.appendChild(gridSquare);
 
@@ -72,6 +74,8 @@ function turnGridWhite() {
         })
     }
 }
+
+
 
 //This will set the initial value of the grid when open the page.
 addGridSquares(slider.value);

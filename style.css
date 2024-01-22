@@ -12,6 +12,13 @@ body {
     justify-content: center;
 }
 
+#functions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+}
+
 #slidecontainer {
     display: flex;
     flex-direction: column;
