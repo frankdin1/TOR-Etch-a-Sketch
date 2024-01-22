@@ -27,6 +27,7 @@ function addGridSquares(gridDims) {
         for (let j = 0; j < gridDims; j++) {
             gridSquare = document.createElement('div');
             gridSquare.setAttribute('id', 'grid-square');
+            gridSquare.style.backgroundColor = 'white';
             gridSquare.style.border = "blue 2px solid";
             const gridSquareBorderWidthInInt = parseFloat(gridSquare.style.borderWidth)
             gridSquare.style.width = (mainDimensionInInt / gridDims) - 2 * gridSquareBorderWidthInInt.toString() + 'px';
@@ -40,16 +41,44 @@ function addGridSquares(gridDims) {
 function turnGridBlack() {
     for (let i = 0; i < mainChildNodes.length; i++) {
         mainChildNodes[i].addEventListener('mouseover', function () {
-            console.log('I am hovering');
             mainChildNodes[i].style.backgroundColor = 'black';
+            //mainChildNodes[i].style.backgroundColor = 'rgb(0,0,0)';
         })
     }
 }
 
+function createRandomColors() {
+    let red = Math.floor(Math.random() * 256);
+    let blue = Math.floor(Math.random() * 256);
+    let green = Math.floor(Math.random() * 256);
+
+    let colors = [red, blue, green];
+    return colors;
+}
+
+function multiColorGrid() {
+    for (let i = 0; i < mainChildNodes.length; i++) {
+        mainChildNodes[i].addEventListener('mouseover', function () {
+            let colors = createRandomColors();
+            mainChildNodes[i].style.backgroundColor = `rgb(${colors[0]},${colors[1]},${colors[2]})`;
+        })
+    }
+}
+
+function turnGridWhite() {
+    for (let i = 0; i < mainChildNodes.length; i++) {
+        mainChildNodes[i].addEventListener('mouseover', function () {
+            mainChildNodes[i].style.backgroundColor = 'white';
+        })
+    }
+}
 
 //This will set the initial value of the grid when open the page.
 addGridSquares(slider.value);
 
+
+mainChildNodes = document.querySelectorAll("#grid-square");
+turnGridBlack();
 
 //Every time the slider moves, its value will be displayed on screen, and the addGridSquares function will run.
 slider.addEventListener('input', function () {
@@ -57,8 +86,6 @@ slider.addEventListener('input', function () {
     gridWidth.innerHTML = slider.value;
     addGridSquares(slider.value);
     mainChildNodes = document.querySelectorAll("#grid-square")
-    turnGridBlack();
+    //turnGridBlack();
+    multiColorGrid();
 })
-
-mainChildNodes = document.querySelectorAll("#grid-square");
-turnGridBlack();
